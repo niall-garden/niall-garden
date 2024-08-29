@@ -1,5 +1,5 @@
 ---
-title: ✉️ contact
+title: contact
 date: 2024-08-13
 draft: 
 tags:
