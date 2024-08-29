@@ -19,4 +19,4 @@ You'd think after all these years of gazing out I'd know every brick, branch and
 
 It's all a testament to how we still can't move on from Heraclitus. The view is always shifting and the viewer is always shifting too. On realising there isn't so much a sense of satisfaction as there is a sense of release. It's not so much that the thing that worries you will come to pass as it is the worrier will come to pass too. 
 
-[[poems]]
+[[🪶 poems]]
