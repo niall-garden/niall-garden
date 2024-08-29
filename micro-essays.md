@@ -1,0 +1,1 @@
+Sometimes the big idea needs a few hundred words. Some of these essays are me thinking aloud, some are little stories and some are fake poems. 
