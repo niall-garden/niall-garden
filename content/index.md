@@ -13,8 +13,8 @@ Being a digital garden, my visitors are free to wander, following links from pos
 
 [[links]]
 [[poems]]  
-[[micro-essays]]  
-[[please patronise me!]]  
+[[notes]]
+[[support]]  
 [[contact]]  
 
 
