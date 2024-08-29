@@ -4,7 +4,7 @@ draft:
 tags:
   - links
 ---
-While I intend to make niall.garden my main web presence from now on, you can also find me at the following platfroms:
+While I intend to make niall.garden my main web presence from now on, you can also find me at the following platforms and websites:
 
 [My website: niallosullivan.co.uk](https://niallosullivan.co.uk)
 
