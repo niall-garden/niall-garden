@@ -10,6 +10,7 @@ Nowadays I post more poems online and no longer perform regularly. I have decide
 
 For now the poems will just appear as a list but when they get numerous enough I'll probably find a way of sorting them out from each other. I recommend just finding something that interests you and then following the links that are available from there. 
 
+[[count them!]]
 [[heraclitus in south london]]  
 
 

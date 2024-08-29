@@ -1,5 +1,6 @@
 ---
 title: <% tp.file.title %>
-tags: 
-draft: false
+date: ""
+tags:
+  - poems
 ---
