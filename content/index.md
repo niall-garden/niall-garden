@@ -15,7 +15,7 @@ Being a digital garden, my visitors are free to wander, following links from pos
 [[🪶 poems]]  
 [[📝 notes]]  
 [[💰 support]]  
-[[contact]]  
+[[✉️ contact]]  
 
 
 
