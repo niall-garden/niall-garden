@@ -12,7 +12,7 @@ This site has been built from an Obsidian vault via the Quartz tool and publishe
 Being a digital garden, my visitors are free to wander, following links from post to post and finding their own way around. It'll probably be a bit sparse in the beginning with a few green shoots and saplings but I hope it'll become wild and unmanageable soon. 
 
 🔗 [[links]]  
-🪶 [[poems]] 
+🪶 [[poems]]  
 📝 [[notes]]  
 💰 [[support]]  
 ✉️ [[contact]]  
