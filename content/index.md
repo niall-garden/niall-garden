@@ -3,7 +3,7 @@ title: Welcome to Niall's digital garden
 draft: 
 tags:
 ---
-![](content/attachments/DSC02992.jpg|300)
+![[content/attachments/DSC02992.jpg|300]]
 
 Hello! My name is Niall O'Sullivan and I am a poet, lecturer, event host, essayist, youtuber, husband and dad.
 
