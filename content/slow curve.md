@@ -2,7 +2,10 @@
 title: slow curve
 date: ""
 tags:
-  - poems
+  - poem
+  - window_poems
+  - fatherhood
+  - 🪴
 status: shrub
 ---
 
@@ -24,5 +27,7 @@ it is bathtime and bedtime then we'll do it all again run it back and think it w
 and nobody will be awake in the small hours to see the street lamp putter out beyond the bedroom window  
 
 before we open our eyes to find a few pips of the day already spent and we will hurry hurry hurry into the thick of noon and the slow curve of evening  
+
+🪴
 
 [[poems]]
