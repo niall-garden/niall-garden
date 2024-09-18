@@ -19,6 +19,8 @@ For now the poems will just appear as a list but when they get numerous enough I
 
 [[count them!]]  
 [[heraclitus in south london]]  
+[slow curve](content/slow%20curve.md)
+
 
 
 [[content/index|index]]

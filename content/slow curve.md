@@ -1,3 +1,12 @@
+---
+title: slow curve
+date: ""
+tags:
+  - poems
+status: shrub
+---
+
+
 thinning sunlight spindles through leaves but a spiteful breeze still snicks between my bones  
 
 my youngest doesn't like it when i copy her actions like letting my long sleeves hang past my hands and waggling them about  

@@ -23,3 +23,4 @@ I could stay here, in this cool, refreshing blankness but I choose to return. I 
 
 2024-09-04
 
+[poems](content/poems.md)
