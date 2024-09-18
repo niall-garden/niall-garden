@@ -6,6 +6,7 @@ tags:
   - snails
   - rain
   - south_london
+status: shrub
 ---
 on the concrete perimeters  
 edging the grass verges  
