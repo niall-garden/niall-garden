@@ -23,4 +23,6 @@ He's largely left alone as it's relatively well known that he has nothing worth 
 
 2024-09-17
 
+🌿
+
 [poems](content/poems.md)

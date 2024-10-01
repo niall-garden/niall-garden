@@ -1,3 +1,5 @@
+
+
 ## barely present
  
 wooden beams prop up balcony alcoves -- 
@@ -314,7 +316,7 @@ My wife watches a square video in a WhatsApp thread of a house burning down in t
 I lay down in the dark and look for the one within that looks to find a nothingness that suddenly swallows everything
 
 
-
+🌳
 
 
 

@@ -10,5 +10,7 @@ if it's anything its this — the serenity within the surge — the weight of sw
 
 2024-06-16
 
+🌿
+
 [poems](content/poems.md)
 
