@@ -6,8 +6,6 @@ tags:
   - nondualism
 status: sapling
 ---
-
-
 You can tell by his collarless shirt and tidy slacks
 that he’s not one of those ashram charlatans
 offering their toejam in sacred jars for pilgrims
