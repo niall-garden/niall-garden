@@ -5,6 +5,7 @@ tags:
   - poems
   - nondualism
 status: sapling
+draft:
 ---
 You can tell by his collarless shirt and tidy slacks
 that he’s not one of those ashram charlatans
