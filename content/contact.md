@@ -21,4 +21,5 @@ This doesn't mean that I think ill of you or too much of myself, I just  tend to
 
 Niall
 
-[[content/index|index]]
+[[index]]
+
