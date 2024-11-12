@@ -19,9 +19,11 @@ For now the poems will just appear as a list but when they get numerous enough I
 
 [[count them!]]  
 [[heraclitus in south london]]  
-[slow curve](content/slow%20curve.md)
-[the monk](content/the%20monk.md)
-[three pounds of flax](content/three%20pounds%20of%20flax.md)
+[slow curve](content/slow%20curve.md) 
+[the monk](content/the%20monk.md. ) 
+[there is no. path from here to here](content/there%20is%20no%20path%20from%20here%20to%20here.md) 
+[three pounds of flax](content/three%20pounds%20of%20flax.md) 
+
 
 
 [[content/index|index]]
