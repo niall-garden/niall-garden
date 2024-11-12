@@ -1,5 +1,5 @@
 ---
-title: '"the monk"'
+title: the monk
 tags:
   - poem
   - nondualism

@@ -1,5 +1,5 @@
 ---
-title: '"three pounds of flax"'
+title: three pounds of flax
 tags:
   - poem
   - buddhism
