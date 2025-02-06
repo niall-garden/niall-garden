@@ -17,6 +17,9 @@ You might notice that each poem has a status: seed, sapling, shrub or tree. This
 
 For now the poems will just appear as a list but when they get numerous enough I'll probably find another way of organising them. I recommend just finding something that interests you and then following the links that are available from there. 
 
+#poems 
+
+[[a youtuber films themself waking up]]
 [[count them!]]  
 [[heraclitus in south london]]  
 [[slow curve]]  
@@ -26,6 +29,8 @@ For now the poems will just appear as a list but when they get numerous enough I
 
 
 
+
 [[content/index|index]]
+
 
 . 
