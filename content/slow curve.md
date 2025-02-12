@@ -31,4 +31,9 @@ before we open our eyes to find a few pips of the day already spent and we will 
 🪴
 
 [poems](poems.md)
+
+
+[[heraclitus in south london]]
+[[count them!]]
+
 #poems 

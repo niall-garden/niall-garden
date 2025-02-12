@@ -13,5 +13,8 @@ if it's anything its this — the serenity within the surge — the weight of sw
 
 🌿
 
+[[there is no path from here to here]]
+[[the monk]]
+
 [poems](poems.md)
 

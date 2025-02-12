@@ -50,5 +50,8 @@ more pure and precise than the last time,
 it’s worth saving up for a lifetime you know,  
 for such close and intimate access to the power of Now.   
 
+[[three pounds of flax]]
+[[the monk]]
+
 
 [poems](poems.md)

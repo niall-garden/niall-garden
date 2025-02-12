@@ -19,7 +19,7 @@ For now the poems will just appear as a list but when they get numerous enough I
 
 #poems 
 
-[[a youtuber films themself waking up]]
+[[a youtuber films themself waking up]]  
 [[count them!]]  
 [[heraclitus in south london]]  
 [[slow curve]]  
@@ -27,10 +27,7 @@ For now the poems will just appear as a list but when they get numerous enough I
 [[there is no path from here to here]]  
 [[three pounds of flax]]
 
-
-
-
-[[content/index|index]]
+[[index]]
 
 
 . 

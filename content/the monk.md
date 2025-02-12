@@ -28,4 +28,7 @@ He's largely left alone as it's relatively well known that he has nothing worth 
 
 #poems 
 
-[poems](poems.md)
+[[poems]]
+
+[[there is no path from here to here]]
+[[three pounds of flax]]
