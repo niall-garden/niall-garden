@@ -3,8 +3,6 @@ title: Poetry Unplugged
 tags: 
 draft: false
 ---
-
-
 Today marks exactly five years since the last Poetry Unplugged at the Poetry Cafe on the evening of the 10th March 2020. 
 
 Nobody really knew how quickly the lockdown was approaching and so there were a few awkward moments where I had to decline some hugs from enthusiastic poets. Most of us were doing the elbow or fist bump variations of the usual handshake. Frankie Boyle was in the audience, which made me feel very self conscious about my usual amateur standupisms. Nobody, including me, had any idea that it was the last Unplugged. Of course, in the months that followed, people were saying goodbye to loved ones through FaceTime or having to watch digital streams of funerals rather than attend them. Losing an open mic is trivial in comparison.
