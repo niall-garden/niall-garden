@@ -22,3 +22,5 @@ Anyway, I'm not writing this to pressure anybody to get it up and running again.
 Poetry Unplugged was a weekly open mic that ran every Tuesday for almost a quarter of a century. It changed people's lives and it was awesome. 
 
 Niall
+
+[[notes - 2025]]
