@@ -5,4 +5,4 @@ tags:
 draft: false
 ---
 
-[[Poetry Unplugged]]
+[[poetryunplugged]]

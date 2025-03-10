@@ -1,6 +1,8 @@
 ---
 title: Poetry Unplugged
-tags: 
+tags:
+  - notes
+  - poetryunplugged
 draft: false
 ---
 Today marks exactly five years since the last Poetry Unplugged at the Poetry Cafe on the evening of the 10th March 2020. 

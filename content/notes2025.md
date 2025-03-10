@@ -6,4 +6,4 @@ draft: false
 ---
 
 
-[[Poetry Unplugged]]
+[[poetryunplugged]]
