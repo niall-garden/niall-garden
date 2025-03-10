@@ -14,13 +14,15 @@ Nobody, including me, had any idea that it was the last Unplugged. Of course, in
 
 Still, it was a massive part of my life and the lives of many others and it's sad that we never got to have that final blowout, that I never got to hand it over to a new host like Carl Dhiman handed it over to me as John Citizen handed it over to him. The night ran for nearly 24 years, every Tuesday.
 
-I also think the London scene has definitely missed a central hub of the kind that Unplugged represented, from the fly-by-night visitors, the regulars to the factions of poets that said "We can do this better" and did something different elsewhere. 
+The London poetry scene has definitely missed a central hub of the kind that Unplugged represented –⁠ from the fly-by-night visitors and the regulars to the factions of poets that said "We can do this better" and did something different elsewhere. 
 
 Open mic will always be an important platform for emerging and established poets. Many mentoring and development schemes have popped up over the years but I don't think they offer the same space to fail and opportunities to experiment that a well-run open mic offers. I know that there are many open mics still running and you should definitely support them. 
 
 Anyway, I'm not writing this to pressure anybody to get it up and running again. I know it's done. But that doesn't mean it has to be forgotten. 
 
-Poetry Unplugged was a weekly open mic that ran every Tuesday for almost a quarter of a century. It changed people's lives and it was awesome. Thanks so much to everybody that was a part of it, from the Poetry Society themselves to the bar staff, the punters and all those beautiful poets (the Hollywoods and the Hardcores). 
+Poetry Unplugged was a weekly open mic that ran every Tuesday for almost a quarter of a century. It changed people’s lives and it was awesome.
+
+Thanks so much to everybody that was a part of it, from the man who launched it, John Citizen, to the man I took over from, Carl Dhiman; the Poetry Society and the bar staff; the punters and all those beautiful poets, the Hollywoods and the Hardcores. 
 
 Niall
 
