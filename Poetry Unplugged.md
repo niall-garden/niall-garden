@@ -23,4 +23,5 @@ Poetry Unplugged was a weekly open mic that ran every Tuesday for almost a quart
 
 Niall
 
-[[notes - 2025]]
+[[notes 2025]]
+
