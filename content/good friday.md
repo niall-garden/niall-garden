@@ -6,30 +6,25 @@ tags:
 status: sapling
 draft: false
 ---
-every time the tree surgeons
-chainsaw the year's growth
-back to fingerless knuckles
-at the tip of each bough
-of the rows of plane trees
+every time the tree surgeons  
+chainsaw the plan tree's growth  
+back to fingerless knuckles  
+at the tip of each bough,   
 
-it always seems to me that they cut
-back too hard and too severely
-and every spring, as the blossom
-vanishes from pavements as mottled
-as the plane trees' trunks 
+it always seems that they cut  
+too hard and too severely –⁠    
+every spring, as the blossom  
+vanishes from pavements  
 
-and magnolias resign themselves 
-into greenness, those thick balled
-clumps of bark remain boisterous 
-and barren, and I ask what life
-could re-spark from their dumb fists?
+and magnolias resign themselves  
+to greenness, I ask what life  
+could re-spark from these
+clumped, dumb fists?  
 
-And of course, at the freying end
-of spring's long tail, green finds
-a way our of the knot, in the same
-way that paganism always finds 
-its way through the cracks 
-of an old time religion.
+Green finds a way 
+our of the knot, 
+like pagan shoots
+through an old religion
 
 [[poems]]
 
