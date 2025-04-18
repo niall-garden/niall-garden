@@ -1,5 +1,5 @@
 ---
-title: '"ordinary mind"'
+title: ordinary mind
 tags:
   - poem
   - nondualism
@@ -22,6 +22,8 @@ I witness my ordinary body with its unremarkable pains from a vantage point of b
 I could stay here, in this cool, refreshing blankness but I choose to return. I always choose to return.
 
 2024-09-04
+
+🌱
 
 [[the monk]]
 [[there is no path from here to here]]

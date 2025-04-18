@@ -1,5 +1,7 @@
 ---
 title: <% tp.file.title %>
-tags: 
+date: 
+tags:
+  - notes
 draft: false
 ---

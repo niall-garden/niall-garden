@@ -1,11 +1,12 @@
 ---
-title: 2024-08-12 finishing an essay with ai
+title: finishing an essay with ai
 tags:
   - note
   - micro_essay
   - AI
   - writing
 draft: false
+date: 2024-08-12
 ---
 
 
