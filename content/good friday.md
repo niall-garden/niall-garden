@@ -21,12 +21,14 @@ to greenness, I ask what life
 could re-spark from these
 clumped, dumb fists?  
 
-Green finds a way 
-our of the knot, 
-like pagan shoots
-through an old religion
+Green finds a way  
+our of the knot,  
+like pagan shoots  
+through an old religion  
 
 [[poems]]
+[[slow curve]]
+[[heraclitus in south london]]
 
 🌱
 
