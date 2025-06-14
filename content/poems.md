@@ -22,6 +22,7 @@ For now the poems will just appear as a list but when they get numerous enough I
 [[a youtuber films themself waking up]]  
 [[count them!]]  
 [[heraclitus in south london]]  
+[[sheet lightning]]
 [[slow curve]]  
 [[the monk]]  
 [[there is no path from here to here]]  
