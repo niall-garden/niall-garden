@@ -3,6 +3,7 @@ title: sheet lightning
 date: 2025-06-14
 tags:
   - poems
+  - window_poems
 draft: false
 ---
 

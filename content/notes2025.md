@@ -9,5 +9,5 @@ draft: false
 [[EDC]]
 [[Speed of thought]]
 [[and the winner is]]
-
+[[Aphorism - the created work]]
 
