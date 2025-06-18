@@ -7,5 +7,7 @@ draft: false
 
 [[poetryunplugged]]
 [[EDC]]
+[[Speed of thought]]
+[[and the winner is]]
 
 
