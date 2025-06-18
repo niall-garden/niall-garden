@@ -19,10 +19,11 @@ For now the poems will just appear as a list but when they get numerous enough I
 
 #poems 
 
-[[ars poetica (after ws graham)]] 🪴  
 [[a youtuber films themself waking up]]  🌿  
+[[ars poetica (after ws graham)]] 🪴   
 [[bitter medicine]] 🌿   
 [[count them!]]  🪴  
+[[good friday]]  🌱
 [[heraclitus in south london]]  🌿  
 [[just you wait til I get you home]] 🪴  
 [[sheet lightning]] 🌱  
@@ -30,6 +31,7 @@ For now the poems will just appear as a list but when they get numerous enough I
 [[the monk]]  🌿  
 [[there is no path from here to here]]  🪴  
 [[three pounds of flax]] 🌿   
+[[this humdrum day with its unwieldy hours shot through with brilliant fragments]]  🌳
 [[voidtrain]] 🪴  
 
 
