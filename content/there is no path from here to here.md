@@ -38,7 +38,7 @@ after a long shift has almost sunk your poor soul
 into the muddy eddies of samsara. He doesn’t even  
 like the word Guru, call him by his first name,  
 the one he chose after realisation, not that other one,  
-our teacher is a simple man with a simple message. 
+our teacher is a simple man with a simple message.  
 and all that noise about his love for expensive cars  
 has been blown out of proportion, he just appreciates  
 precision. You could say that he’s selling you  
@@ -52,8 +52,8 @@ for such close and intimate access to the power of Now.
 
 🪴
 
-[[three pounds of flax]]
-[[the monk]]
+[[three pounds of flax]]  
+[[the monk]]  
 
 
 [poems](poems.md)
