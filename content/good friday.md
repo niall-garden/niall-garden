@@ -7,7 +7,7 @@ status: sapling
 draft: false
 ---
 every time the tree surgeons  
-chainsaw the plan tree's growth  
+chainsaw the plane tree's growth  
 back to fingerless knuckles  
 at the tip of each bough,   
 
@@ -26,7 +26,7 @@ out of the knot –⁠
 a pagan assurance  
 that precedes faith
 
-%% (I really don't like the ending to this as it stands. I know what I'm trying to say but am not happy with how I've said it. I'm not one of those "show-don't-tell" blowhards but I thing some kind of image is needed here to match the clumped fists of the previous stanza. ) %%
+> I really don't like the ending to this as it stands. I know what I'm trying to say but am not happy with how I've said it. I'm not one of those "show-don't-tell" blowhards but I thing some kind of image is needed here to match the clumped fists of the previous stanza.  30/6/25
  
 
 [[poems]]  
