@@ -22,9 +22,11 @@ but there was nowhere to bank those hours
 anyway. A second alarm goes off meaning  
 it's time to wake my eldest. This is the life  
 I chose and the gradient I lean into.  
-The coffee swishes, lukewarm in the cup. 
+The coffee swishes, lukewarm in the cup 
 as I knock back my dark, bitter medicine. 
 
 🌿
 
 [[poems]]
+
+>I think that the final line might be a bit of a false tail, a bit too neat and familiar and probably a cliche. I might change it but keep the title as it is.  
