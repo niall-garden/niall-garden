@@ -1,4 +1,10 @@
-
+---
+title: hunt and peck
+date: 
+tags:
+  - "#lyric_essay"
+draft: false
+---
 ## Dicky Birds
 
 You probably started the same way –⁠ two little Dicky Birds extended over the keys, striking down onto a letter after an eye snags onto it. In my case there was the satisfying snap of the electric typewriter, but I had to go extra slow because an error meant starting again from scratch. Not an issue for poets but a bugger for wannabe Tolstoys. Then, by their own seeming volition, the fingers got a little bit faster. The circling became a jittery pause before the strike of the key and then it became hopscotch –⁠ two fingers leaping from square to square, or note-to-note like the Chopsticks scene in Big. 
@@ -14,4 +20,4 @@ When I was at art college I found out that one of my lecturers only made paintin
 Remember that thumb that found it's vocation by smashing the space bar, thumping back the percussion of negative space? It got another job, a bigger job. It became the digit that lightly pressed against the bottom of a sheet of glass to fligh upwards, summoning new thing after new thing,   , where it could also register its desires by jabbing on any summoned item that caused a little spark in the place behind the eyes where all those words happen. The brain was like a pigeon that didn't have to inspeuct the paving slabs beneath dining tables. It could stand before a constant landslide of crumbs and the thumb was the beak that kept darting into it. Schopenhauer spoke of the need for information eclipsing the need for insight, but even then, the room that one sits in is a plethora of information and the world beyond that room, even more so. Much like the paving slabs that become a slight grey blur when it is in its true element, the six inch sheet of glass is also capable of becoming something immense, but only by diminishing the mind that seeks its immensity. There are billionaires that belive you can upload your soul into this rectangular world and so they began the the work of making their souls more rectangular. The pigeon in flight has not thoughts of immortality or its opposite. Its grace comes from the sky that speaks through it. 
 
 ___
-I think this is my first lyric essay in a while, not quite a prose poem and definitely not a critical essay. We think with images and sounds and these images and sounds aren't always words and images and sounds can have their own nonverbal logic. I think I've always been this kind of thinker. My early poetry definitely comes from me being a failed filmmaker in my early 20s.
+I think this is my first lyric essay in a while, not quite a prose poem and definitely not a critical essay. We think with images and sounds and these images and sounds aren't always words and images and sounds can have their own nonverbal logic. I think I've always been this kind of thinker. My early poetry definitely comes from me being a failed filmmaker in my early 20s. I had come to accept that I wouldn't be realising the cinematic images that popped into my head so poetry became a means of satisfying that itch, particularly in how a poem can revel in the image without necessarily having to worry about plot and character development.
