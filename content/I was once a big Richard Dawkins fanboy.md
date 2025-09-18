@@ -1,7 +1,7 @@
 ---
-title: 2024-08-16- I was once a big Richard Dawkins fanboy
+title: "I was once a big Richard Dawkins fanboy (note: 15/08/24)"
 date: 2024-08-15
-draft: 
+draft:
 tags:
   - note
   - dawkins

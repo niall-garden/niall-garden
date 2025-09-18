@@ -1,7 +1,7 @@
 ---
-title: '"2024-08-26 They Live and Instapoetry"'
+title: "They Live and Instapoetry (note: 26/08/24)"
 date: 2024-08-27
-draft: 
+draft:
 tags:
   - note
   - instapoetry

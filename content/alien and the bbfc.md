@@ -1,7 +1,7 @@
 ---
-title: 2024-08-15 alien
+title: alien and the bbfc (note 15/08/24)
 date: 2024-08-15
-draft: 
+draft:
 tags:
   - alien
   - film
