@@ -1,5 +1,5 @@
 ---
-title: POEM (Dwayne Johnson has lost 60lbs) –⁠ after Frank O'Hara
+title: poem-dwayne
 date: 2025-09-05T20:31:00
 tags:
   - poems
