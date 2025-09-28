@@ -1,0 +1,272 @@
+{
+  "main": {
+    "id": "0ae054bfb2d66e05",
+    "type": "split",
+    "children": [
+      {
+        "id": "280d4782ed819039",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa6c7e945bce8ad3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/poem-dwayne.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": false
+                }
+              },
+              "icon": "lucide-file",
+              "title": "poem-dwayne"
+            }
+          },
+          {
+            "id": "3ffd1214b7731663",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "attachments/Untitled.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "61288dd5a75186b8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.12"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.12"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "690b741ff1d0b98c",
+    "type": "split",
+    "children": [
+      {
+        "id": "d9ae265fafa6867a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d116147789a75465",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "cb9f056a4a37dfdd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ef730eb67774fb7c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "420b741f812bd223",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "02c999136ca07a83",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2180b6e05eba77e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ed3f21b98c87f25",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "the (bitter)sweet science of the lyric poem.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for the (bitter)sweet science of the lyric poem"
+            }
+          },
+          {
+            "id": "b7e4f2e19782ffc7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "templates/poem.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from poem"
+            }
+          },
+          {
+            "id": "6d850c279582e2c5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6a0c4ae804d7f0ab",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "templates/poem.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of poem"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "aa6c7e945bce8ad3",
+  "lastOpenFiles": [
+    "content/EDC.md",
+    "content/brilliant-fragments.md",
+    "content/Whenever I hear Sweet Caroline, I imagine getting kicked in the head in a pub car park somewhere in Zone 6.md",
+    "content/on humility.md",
+    "content/hunt and peck.md",
+    "content/finishing an essay with ai.md",
+    "content/links.md",
+    "content/They Live and Instapoetry.md",
+    "content/count them!.md",
+    "content/notes –⁠ 2024.md",
+    "content/hunt and peck draft.md",
+    "content/index.md",
+    "content/a youtuber films themself waking up.md",
+    "content/heraclitus in south london.md",
+    "content/ars poetica (after ws graham).md",
+    "content/Speed of thought.md",
+    "content/Aphorism - the created work.md",
+    "content/good friday.md",
+    "content/Wigs.md",
+    "content/just you wait til I get you home.md",
+    "content/contact.md",
+    "content/Brown Hell.md",
+    "content/notes2025.md",
+    "content/and the winner is.md",
+    "content/alien and the bbfc.md",
+    "content/I was once a big Richard Dawkins fanboy.md",
+    "quartz/static/og-image.png",
+    "quartz/static/icon.png",
+    "docs/images/github-init-repo-options.png",
+    "docs/images/giscus-discussion.png",
+    "docs/images/dns records.png",
+    "docs/images/custom-social-image-preview-light.png",
+    "docs/images/custom-social-image-preview-dark.png",
+    "content",
+    "docs/images/social-image-preview-dark.png",
+    "public/static/og-image.png",
+    "public/static/icon.png",
+    "https/buttondown.com",
+    "https",
+    "node_modules/@napi-rs/simple-git-android-arm-eabi",
+    "node_modules/@esbuild/aix-ppc64",
+    "node_modules/tsx/node_modules/@esbuild/android-arm64",
+    "node_modules/tsx/node_modules/@esbuild/android-arm",
+    "node_modules/tsx/node_modules/@esbuild/aix-ppc64",
+    "node_modules/lightningcss-win32-x64-msvc",
+    "node_modules/lightningcss-win32-arm64-msvc"
+  ]
+}
