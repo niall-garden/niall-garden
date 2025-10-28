@@ -5,10 +5,11 @@ tags:
 draft: false
 ---
 
-[[poetryunplugged]]
-[[EDC]]
-[[Speed of thought]]
-[[and the winner is]]
-[[Aphorism - the created work]]
-[[gmt]]
+[[poetryunplugged]]  
+[[EDC]]  
+[[Speed of thought]]  
+[[and the winner is]]  
+[[Aphorism - the created work]]  
+[[gmt]]  
+
 
