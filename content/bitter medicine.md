@@ -22,8 +22,8 @@ but there was nowhere to bank those hours
 anyway. A second alarm goes off meaning  
 it's time to wake my eldest. This is the life  
 I chose and the gradient I lean into.  
-The coffee swishes, lukewarm in the cup 
-as I knock back my dark, bitter medicine. 
+The coffee swishes, lukewarm in the cup  
+as I knock back my dark, bitter medicine.  
 
 🌿
 
