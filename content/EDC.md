@@ -23,4 +23,4 @@ It also reminds me of the original hype for the tech we're all trying to get awa
 
 The twentieth century denizen was not a kind of undistracted monk. They were as tired and distracted as the rest of us. They worked their arses off to get a patch of grass, a little box to sleep in and put their feet up during a time when such things were considered more a right than a premium. They sat around a glowing box that flickered dreams and nightmares like their ancestors once sat around fires. None of them asked for any of this.
 
-[[notes2025]]
+[[notes - 2025]]

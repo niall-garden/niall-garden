@@ -3,6 +3,7 @@ title: poems
 tags:
   - poems
 draft:
+date:
 ---
 I have been writing and sharing poems since I was a nipper. If you're interested in what I wrote during the first twenty-ish years of my career, then I'd recommend my New and Selected poems, Werewolf of London (Flipped Eye, 2021)
 

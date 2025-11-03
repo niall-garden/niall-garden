@@ -3,6 +3,7 @@ title: notes –⁠ 2025
 tags:
   - notes
 draft: false
+date:
 ---
 
 [[poetryunplugged]]  
@@ -10,6 +11,8 @@ draft: false
 [[Speed of thought]]  
 [[and the winner is]]  
 [[Aphorism - the created work]]  
-[[gmt]]  
+[[Brown Hell]]
+[[gmt]]
+
 
 

@@ -26,5 +26,5 @@ Thanks so much to everybody that was a part of it, from the man who launched it,
 
 Niall
 
-[[notes 2025]]
+[[notes - 2025]]
 

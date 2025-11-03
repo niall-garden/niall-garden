@@ -20,4 +20,4 @@ A clock is any contraption or substance that changes in a steady and predictable
 2025-10-26
 
 
-[[notes2025]]
+[[notes - 2025]]

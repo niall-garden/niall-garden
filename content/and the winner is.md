@@ -12,5 +12,5 @@ It's also a reading to a room full of 3000 poetry enthusiasts (people who mainta
 
 I used to be a bit judgemental about the bigger poets who often seem rude or aloof at these things but I've come to believe that they hate it too, hence their aloofness or rudeness. Again, nothing really wrong with any of it. I'm just glad I don't get invited any more. 
 
-[[notes2025]]
+[[notes - 2025]]
 
