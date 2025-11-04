@@ -107,17 +107,37 @@ function chunkText(text, limit, link) {
 }
 
 // Mastodon post
-async function postToMastodon(baseUrl, token, chunks) {
-  const url = new URL('/api/v1/statuses', baseUrl).toString();
+async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
+  const chunks = [];
+
+  if (socialPreview && text.length + link.length + 1 > 1000) {
+    // Split into 1000-char chunks, append link to first/last
+    let remaining = text;
+    while (remaining.length > 0) {
+      let chunk = remaining.slice(0, 1000 - 1);
+      if (remaining.length > 1000) {
+        const lastSpace = chunk.lastIndexOf(' ');
+        if (lastSpace > 0) chunk = chunk.slice(0, lastSpace);
+      }
+      chunks.push(chunk);
+      remaining = remaining.slice(chunk.length).trim();
+    }
+    chunks[0] = `${chunks[0]} ${link}`;
+    chunks[chunks.length - 1] = `${chunks[chunks.length - 1]} ${link}`;
+  } else {
+    // Full text + link if socialPreview is false or short post
+    chunks.push(`${text}\n${link}`);
+  }
+
   let replyId = null;
   for (let i = 0; i < chunks.length; i++) {
     const status = chunks[i];
     const body = { status };
     if (replyId) body.in_reply_to_id = replyId;
-    const res = await fetch(url, {
+    const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
@@ -133,19 +153,22 @@ async function postToMastodon(baseUrl, token, chunks) {
 }
 
 // Bluesky post
-async function postToBluesky(username, appPass, text) {
+async function postToBluesky(username, appPass, text, socialPreview = true, postLink = '') {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
 
-  // truncate to 300 chars
+  // Strip markdown links
+  const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+
   const MAX_LEN = 300;
-  const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1'); // strip markdown links
   let finalText;
 
-  if (plainText.length > MAX_LEN) {
+  if (plainText.length > MAX_LEN && socialPreview) {
+    // truncated post with "Read more:"
     const truncated = plainText.slice(0, MAX_LEN - 12).trim(); // leave space for " Read more:"
     finalText = `${truncated} Read more: ${postLink}`;
   } else {
+    // full text + canonical link on a new line
     finalText = `${plainText}\n${postLink}`;
   }
 
@@ -204,19 +227,20 @@ async function main() {
   const plainText = markdownToPlain(newest.content);
   const postLink = `https://niall.garden/${path.basename(newest.path, '.md')}`;
 
-  // Mastodon
-  if (mastodonBase && mastodonToken) {
-    const chunks = chunkText(plainText, 1000 - postLink.length - 1, postLink); // 1000 char limit
-    await postToMastodon(mastodonBase, mastodonToken, chunks);
-  } else {
-    console.log('Mastodon credentials missing. Skipping Mastodon.');
-  }
+ const fm = matter(raw);
+const postLink = `https://niall.garden/${path.basename(f, '.md')}`;
+const socialPreview = fm.data.social_preview !== false;
 
-  // Bluesky
-  if (bskyUser && bskyAppPass) {
-    const truncated = plainText.slice(0, 300 - postLink.length - 1) + ' ' + postLink;
-    await postToBluesky(bskyUser, bskyAppPass, truncated);
-  } else {
+// Mastodon
+if (mastodonBase && mastodonToken) {
+  await postToMastodon(mastodonBase, mastodonToken, markdownToPlain(fm.content), socialPreview, postLink);
+}
+
+// Bluesky
+if (bskyUser && bskyAppPass) {
+  await postToBluesky(bskyUser, bskyAppPass, markdownToPlain(fm.content), socialPreview, postLink);
+}
+ else {
     console.log('Bluesky credentials missing. Skipping Bluesky.');
   }
 
