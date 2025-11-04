@@ -134,7 +134,7 @@ async function postToMastodon(baseUrl, token, chunks) {
 
 // Bluesky post
 async function postToBluesky(username, appPass, text) {
-  const agent = new BskyAgent({ service: 'https://bsky.social' });
+  const agent = new BskyAgent({ service: 'https://bsky.app' });
   await agent.login({ identifier: username, password: appPass });
   const res = await agent.post({ text });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
