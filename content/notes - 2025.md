@@ -2,8 +2,8 @@
 title: notes –⁠ 2025
 tags:
   - notes
+date: 2025-01-01T11:20:00
 draft: false
-date:
 ---
 
 [[poetryunplugged]]  
@@ -13,6 +13,4 @@ date:
 [[Aphorism - the created work]]  
 [[Brown Hell]]
 [[gmt]]
-
-
 
