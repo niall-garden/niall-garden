@@ -136,9 +136,23 @@ async function postToMastodon(baseUrl, token, chunks) {
 async function postToBluesky(username, appPass, text) {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
-  const res = await agent.post({ text });
+
+  // truncate to 300 chars
+  const MAX_LEN = 300;
+  const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1'); // strip markdown links
+  let finalText;
+
+  if (plainText.length > MAX_LEN) {
+    const truncated = plainText.slice(0, MAX_LEN - 12).trim(); // leave space for " Read more:"
+    finalText = `${truncated} Read more: ${postLink}`;
+  } else {
+    finalText = `${plainText}\n${postLink}`;
+  }
+
+  const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
 }
+
 
 // main
 async function main() {
