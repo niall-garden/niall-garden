@@ -1,11 +1,11 @@
 ---
-title: Welcome to Niall's digital garden
-draft: 
+title: Poems, fragments, notes, yarns and asides from Niall O'Sullivan
+draft:
 tags:
 ---
-![](https://github.com/niall-garden/niall-garden/blob/v4/attachments/IMG_1759.png?raw=true)Hello! My name is Niall O'Sullivan and I am a poet, lecturer, event host, essayist, youtuber, husband and dad.
+![](https://github.com/niall-garden/niall-garden/blob/v4/attachments/IMG_1759.png?raw=true)Hello! My name is Niall O'Sullivan and I am a poet, lecturer, essayist, husband and dad.
 
-This is my digital garden, a place for my poems, thoughts, notes, essays and maybe some art too. 
+This is my digital garden, a place for my poems, thoughts, notes, essays and maybe some art too. This site follows the [POSSE ethos](https://indieweb.org/POSSE) (Post on Your Own Site Syndicate Elsewhere) meaning that my posts are also shared on social media ([mastodon][https://sunny.garden/@rustyniall] and [bluesky](https://bsky.app/profile/rustyniall.bsky.social)) but this is the canonical home of everything I write online. 
 
 This site has been built from an Obsidian vault via the Quartz tool and published via github pages.
 
