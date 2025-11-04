@@ -11,6 +11,5 @@ draft: false
 [[Speed of thought]]  
 [[and the winner is]]  
 [[Aphorism - the created work]]  
-[[Brown Hell]]
-[[gmt]]
-
+[[Brown Hell]]   
+[[gmt]]  
