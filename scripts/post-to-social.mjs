@@ -224,8 +224,7 @@ async function main() {
     return;
   }
 
-  const plainText = markdownToPlain(newest.content);
-  const postLink = `https://niall.garden/${path.basename(newest.path, '.md')}`;
+
 
  const fm = matter(raw);
 const postLink = `https://niall.garden/${path.basename(f, '.md')}`;
