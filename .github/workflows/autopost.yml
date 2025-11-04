@@ -1,7 +1,7 @@
 name: Autopost Socials
 on:
   workflow_run:
-    workflows: ["deploy.yml"]
+    workflows: ["Deploy Quartz site to GitHub Pages"]
     types:
       - completed
 
