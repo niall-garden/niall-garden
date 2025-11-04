@@ -63,6 +63,7 @@ function markdownToPlain(md) {
   txt = txt.replace(/^#+\s*(.*)/gm, '$1');
   txt = txt.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
   txt = txt.replace(/!\[.*?\]\(.*?\)/g, '');
+  txt = txt.replace(/\[\[([^\]]+)\]\]/g, '$1');
   txt = txt.replace(/\n{3,}/g, '\n\n');
   return txt.trim();
 }
@@ -109,21 +110,30 @@ async function postToMastodon(baseUrl, token, text, socialPreview = true, link =
   }
 }
 
+// Bluesky post
 async function postToBluesky(username, appPass, text, socialPreview = true, postLink = '') {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
 
+  // Strip markdown links so we don't break the post
   const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
 
   const MAX_LEN = 300;
   let finalText;
 
   if (plainText.length > MAX_LEN && socialPreview) {
-    const truncated = plainText.slice(0, MAX_LEN - 12).trim();
+    // truncated post with "Read more:"
+    const truncated = plainText.slice(0, MAX_LEN - 12).trim(); // leave space for " Read more:"
     finalText = `${truncated} Read more: ${postLink}`;
   } else {
-    finalText = `${plainText}\n${postLink}`;
+    // full post → just append canonical link inline
+    finalText = `${plainText} ${postLink}`;
   }
+
+  const res = await agent.post({ text: finalText });
+  console.log('Bluesky posted:', res.uri || '(no uri returned)');
+}
+
 
   const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
