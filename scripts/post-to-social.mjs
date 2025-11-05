@@ -11,7 +11,7 @@ import { BskyAgent } from '@atproto/api';
 const CONTENT_DIR = 'content';
 const LAST_POST_FILE = 'data/last-social-post.json';
 
-// helpers
+// Helpers
 const parseISO = s => (s ? new Date(s) : null);
 
 async function readLastPosted() {
@@ -61,16 +61,18 @@ function markdownToPlain(md) {
   txt = txt.replace(/__(.*?)__/gs, '$1');
   txt = txt.replace(/_(.*?)_/gs, '*$1*');
   txt = txt.replace(/^#+\s*(.*)/gm, '$1');
-  txt = txt.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
-  txt = txt.replace(/!\[.*?\]\(.*?\)/g, '');
-  txt = txt.replace(/\[\[([^\]]+)\]\]/g, '$1');
+  txt = txt.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1'); // convert links to plain text
+  txt = txt.replace(/!\[.*?\]\(.*?\)/g, ''); // remove images
   txt = txt.replace(/\n{3,}/g, '\n\n');
   return txt.trim();
 }
 
-async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
+// Mastodon post with threading
+async function postToMastodon(baseUrl, token, text, socialPreview = true, postLink = '') {
   const chunks = [];
-  if (socialPreview && text.length + link.length + 1 > 1000) {
+
+  if (socialPreview && text.length + postLink.length + 1 > 1000) {
+    // split long post into 1000-char chunks
     let remaining = text;
     while (remaining.length > 0) {
       let chunk = remaining.slice(0, 1000 - 1);
@@ -81,10 +83,11 @@ async function postToMastodon(baseUrl, token, text, socialPreview = true, link =
       chunks.push(chunk);
       remaining = remaining.slice(chunk.length).trim();
     }
-    chunks[0] = `${chunks[0]} ${link}`;
-    chunks[chunks.length - 1] = `${chunks[chunks.length - 1]} ${link}`;
+    chunks[0] = `${chunks[0]} ${postLink}`;
+    chunks[chunks.length - 1] = `${chunks[chunks.length - 1]} ${postLink}`;
   } else {
-    chunks.push(`${text}\n${link}`);
+    // full post fits, just append link
+    chunks.push(`${text}\n${postLink}`);
   }
 
   let replyId = null;
@@ -96,9 +99,9 @@ async function postToMastodon(baseUrl, token, text, socialPreview = true, link =
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
     if (!res.ok) {
       const txt = await res.text();
@@ -115,30 +118,22 @@ async function postToBluesky(username, appPass, text, socialPreview = true, post
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
 
-  // Strip markdown links so we don't break the post
-  const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
-
+  const plainText = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1'); // strip markdown links
   const MAX_LEN = 300;
   let finalText;
 
   if (plainText.length > MAX_LEN && socialPreview) {
-    // truncated post with "Read more:"
     const truncated = plainText.slice(0, MAX_LEN - 12).trim(); // leave space for " Read more:"
     finalText = `${truncated} Read more: ${postLink}`;
   } else {
-    // full post → just append canonical link inline
-    finalText = `${plainText} ${postLink}`;
+    finalText = `${plainText}\n${postLink}`;
   }
 
   const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
 }
 
-
-  const res = await agent.post({ text: finalText });
-  console.log('Bluesky posted:', res.uri || '(no uri returned)');
-}
-
+// Main
 async function main() {
   console.log('Autopost: starting');
 
@@ -156,17 +151,18 @@ async function main() {
     return;
   }
 
-  // parse files and filter by socials tag
   const posts = [];
   for (const f of mdFiles) {
     const raw = await fs.readFile(f, 'utf8');
     const fm = matter(raw);
     const iso = isoDateFromFM(fm.data);
     const tags = fm.data.tags
-      ? Array.isArray(fm.data.tags) ? fm.data.tags.map(t => t.toLowerCase()) : [fm.data.tags.toLowerCase()]
+      ? Array.isArray(fm.data.tags)
+        ? fm.data.tags.map(t => t.toLowerCase())
+        : [fm.data.tags.toLowerCase()]
       : [];
     if (!iso || !tags.includes('socials')) continue;
-    posts.push({ path: f, dateIso: iso, content: raw, fm });
+    posts.push({ path: f, dateIso: iso, content: raw });
   }
 
   if (posts.length === 0) {
@@ -174,28 +170,31 @@ async function main() {
     return;
   }
 
-  // find newest by date
   posts.sort((a, b) => new Date(b.dateIso) - new Date(a.dateIso));
   const newest = posts[0];
   console.log('Newest post for socials:', newest.path, newest.dateIso);
 
-  // skip if already posted
   if (lastPostedIso && new Date(newest.dateIso) <= new Date(lastPostedIso)) {
     console.log('No new posts to publish (already posted). Exiting.');
     return;
   }
 
-  const { fm, content, path: filePath } = newest;
-  const postLink = `https://niall.garden/${path.basename(filePath, '.md')}`;
-  const socialPreview = fm.data.social_preview !== false;
-  const plainText = markdownToPlain(content);
+  // Front-matter and canonical link
+  const raw = newest.content;
+  const fm = matter(raw);
+  const postLink = `https://niall.garden/${path.basename(newest.path, '.md')}`;
+  const socialPreview = fm.data.social_preview !== false; // false disables canonical link
 
+  const plainText = markdownToPlain(raw);
+
+  // Mastodon
   if (mastodonBase && mastodonToken) {
     await postToMastodon(mastodonBase, mastodonToken, plainText, socialPreview, postLink);
   } else {
     console.log('Mastodon credentials missing. Skipping Mastodon.');
   }
 
+  // Bluesky
   if (bskyUser && bskyAppPass) {
     await postToBluesky(bskyUser, bskyAppPass, plainText, socialPreview, postLink);
   } else {
