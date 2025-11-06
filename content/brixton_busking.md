@@ -1,6 +1,6 @@
 ---
 title: Brixton Busking
-date:
+date: 2025-11-06T20:14:00
 tags:
   - socials
   - shitpost
