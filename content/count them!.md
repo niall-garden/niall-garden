@@ -26,7 +26,7 @@ will ferry the few to lush leaves?
 I would have filmed them all  
 if I hadn't left my phone back home –⁠  
 it's just me the snails and the rain  
-and my thoughts –⁠ oh yes –⁠ here they come
+and my thoughts –⁠ oh yes –⁠ here they come  
 
 [[poems]]
 [[heraclitus in south london]]

@@ -3,6 +3,8 @@ title: EDC
 date: 2025-06-13
 tags:
   - notes
+  - minimalism
+  - tech
 draft: false
 ---
 
