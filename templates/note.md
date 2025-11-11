@@ -1,7 +1,9 @@
 ---
 title: <% tp.file.title %>
-date: 
+date:
 tags:
   - notes
+  - socials
 draft: false
+social_preview: "false"
 ---
