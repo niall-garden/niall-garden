@@ -1,6 +1,6 @@
 // /scripts/post-to-social.mjs
 // Node 18+ (ESM)
-// Autoposts Quartz posts tagged 'socials' to Mastodon & Bluesky
+// Simplified autopost for Quartz posts tagged 'socials' to Mastodon & Bluesky
 
 import fs from 'fs/promises';
 import path from 'path';
@@ -58,7 +58,7 @@ function isoDateFromFM(data) {
   return dt.toISOString();
 }
 
-// convert markdown to plain text (keep paragraphs, preserve italics, remove bold, headings, links)
+// convert markdown to plain text (preserve paragraphs, italics, remove bold/headings/links)
 function markdownToPlain(md) {
   let txt = md;
 
@@ -66,8 +66,8 @@ function markdownToPlain(md) {
   txt = txt.replace(/^---[\s\S]*?---\n/, '');
 
   // Keep *italics*, remove bold
-  txt = txt.replace(/\*\*(.*?)\*\*/gs, '$1'); 
-  txt = txt.replace(/__(.*?)__/gs, '$1'); 
+  txt = txt.replace(/\*\*(.*?)\*\*/gs, '$1');
+  txt = txt.replace(/__(.*?)__/gs, '$1');
 
   // Normalize italics to *
   txt = txt.replace(/_(.*?)_/gs, '*$1*');
@@ -87,118 +87,48 @@ function markdownToPlain(md) {
   return txt.trim();
 }
 
-// Mastodon post (paragraph-safe, 1500-char limit, canonical link on first & last)
-async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
-  const chunks = [];
-  const LIMIT = 1500; // updated limit
+// Mastodon post (single post, up to 1500 chars)
+async function postToMastodon(baseUrl, token, text, link) {
+  const LIMIT = 1500;
+  let finalText;
 
-  // helper: split a very long paragraph into word-boundary chunks
-  function splitLongParagraph(para, limit) {
-    const parts = [];
-    let remaining = para.trim();
-    while (remaining.length > 0) {
-      let chunk = remaining.slice(0, limit);
-      if (remaining.length > limit) {
-        const lastSpace = chunk.lastIndexOf(' ');
-        if (lastSpace > 0) chunk = chunk.slice(0, lastSpace);
-      }
-      parts.push(chunk.trim());
-      remaining = remaining.slice(chunk.length).trim();
-    }
-    return parts;
-  }
-
-  if (socialPreview && text.length + link.length + 1 > LIMIT) {
-    // Split text into paragraphs first (double line breaks)
-    const paragraphs = text.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
-    let currentChunk = '';
-
-    for (const para of paragraphs) {
-      // If paragraph itself exceeds limit, break the paragraph into smaller parts
-      if (para.length > LIMIT) {
-        const parts = splitLongParagraph(para, LIMIT);
-        for (const part of parts) {
-          if (currentChunk && (currentChunk + '\n\n' + part).trim().length <= LIMIT) {
-            currentChunk += (currentChunk ? '\n\n' : '') + part;
-          } else {
-            if (currentChunk) {
-              chunks.push(currentChunk.trim());
-            }
-            currentChunk = part;
-          }
-        }
-        continue;
-      }
-
-      // Normal paragraph handling: add paragraph to current chunk if it fits,
-      // otherwise push current chunk and start a new one with this paragraph.
-      if ((currentChunk + '\n\n' + para).trim().length > LIMIT) {
-        if (currentChunk) {
-          chunks.push(currentChunk.trim());
-        }
-        currentChunk = para;
-      } else {
-        currentChunk += (currentChunk ? '\n\n' : '') + para;
-      }
-    }
-
-    if (currentChunk) {
-      chunks.push(currentChunk.trim());
-    }
-
-    // add canonical link to first and last chunk only (M-both)
-    if (chunks.length === 1) {
-      chunks[0] = `${chunks[0]}\n${link}`;
-    } else if (chunks.length > 1) {
-      chunks[0] = `${chunks[0]}\n${link}`;
-      chunks[chunks.length - 1] = `${chunks[chunks.length - 1]}\n${link}`;
-    }
+  if (text.length > LIMIT) {
+    const truncated = text.slice(0, LIMIT - 12).trim(); // leave space for '… read more'
+    finalText = `${truncated}… read more: ${link}`;
   } else {
-    // Full text + link (single post)
-    chunks.push(`${text}\n${link}`);
+    finalText = `${text}\n${link}`;
   }
 
-  // Post chunks as nested replies (each reply to the previous)
-  let replyId = null;
-  for (let i = 0; i < chunks.length; i++) {
-    const status = chunks[i];
-    const body = { status };
-    if (replyId) body.in_reply_to_id = replyId;
-    const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) {
-      const txt = await res.text();
-      throw new Error(`Mastodon post failed: ${res.status} ${txt}`);
-    }
-    const json = await res.json();
-    replyId = json.id;
-    console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
+  const body = { status: finalText };
+  const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Mastodon post failed: ${res.status} ${txt}`);
   }
+  const json = await res.json();
+  console.log('Mastodon posted, id:', json.id);
 }
 
-// Bluesky post
-async function postToBluesky(username, appPass, text, socialPreview = true, postLink = '') {
+// Bluesky post (single post, up to 300 graphemes)
+async function postToBluesky(username, appPass, text, link) {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
-
-  const plainText = text;
 
   const MAX_LEN = 300;
   let finalText;
 
-  if (plainText.length > MAX_LEN && socialPreview) {
-    // truncate + read more at canonical link
-    const truncated = plainText.slice(0, MAX_LEN - 12).trim();
-    finalText = `${truncated}… read more at:\n${postLink}`;
+  if (text.length > MAX_LEN) {
+    const truncated = text.slice(0, MAX_LEN - 12).trim();
+    finalText = `${truncated}… read more: ${link}`;
   } else {
-    // full text + canonical link
-    finalText = `${plainText}\n${postLink}`;
+    finalText = `${text}\n${link}`;
   }
 
   const res = await agent.post({ text: finalText });
@@ -255,16 +185,17 @@ async function main() {
   // frontmatter
   const fm = matter(newest.content);
   const postLink = `https://niall.garden/${path.basename(newest.path, '.md')}`;
-  const socialPreview = fm.data.social_preview !== false && !fm.data.social_no_link;
+
+  const text = markdownToPlain(fm.content);
 
   // Mastodon
   if (mastodonBase && mastodonToken) {
-    await postToMastodon(mastodonBase, mastodonToken, markdownToPlain(fm.content), socialPreview, postLink);
+    await postToMastodon(mastodonBase, mastodonToken, text, postLink);
   }
 
   // Bluesky
   if (bskyUser && bskyAppPass) {
-    await postToBluesky(bskyUser, bskyAppPass, markdownToPlain(fm.content), socialPreview, postLink);
+    await postToBluesky(bskyUser, bskyAppPass, text, postLink);
   } else {
     console.log('Bluesky credentials missing. Skipping Bluesky.');
   }
