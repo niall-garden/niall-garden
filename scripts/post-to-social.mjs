@@ -1,7 +1,6 @@
 // /scripts/post-to-social.mjs
 // Node 18+ (ESM)
-// Auto-posts Quartz notes tagged "socials" to Mastodon & Bluesky
-// using simple truncation and never republishing old posts.
+// Autoposts Quartz posts tagged 'socials' to Mastodon & Bluesky
 
 import fs from 'fs/promises';
 import path from 'path';
@@ -12,17 +11,21 @@ import { BskyAgent } from '@atproto/api';
 const CONTENT_DIR = 'content';
 const LAST_POST_FILE = 'data/last-social-post.json';
 
-// Read last posted ISO timestamp
+// helpers
+const parseISO = s => (s ? new Date(s) : null);
+
+// read last-posted info
 async function readLastPosted() {
   try {
     const txt = await fs.readFile(LAST_POST_FILE, 'utf8');
-    return JSON.parse(txt).lastPosted || null;
+    const json = JSON.parse(txt);
+    return json.lastPosted || null;
   } catch {
     return null;
   }
 }
 
-// Save last posted ISO timestamp
+// write last-posted date
 async function writeLastPosted(dateIso) {
   await fs.mkdir(path.dirname(LAST_POST_FILE), { recursive: true });
   await fs.writeFile(
@@ -32,105 +35,180 @@ async function writeLastPosted(dateIso) {
   );
 }
 
-// Collect all markdown files recursively
+// recursively collect md files
 async function collectMdFiles(dir) {
   const results = [];
-  async function walk(folder) {
-    const items = await fs.readdir(folder, { withFileTypes: true });
-    for (const item of items) {
-      const full = path.join(folder, item.name);
-      if (item.isDirectory()) await walk(full);
-      else if (item.isFile() && full.endsWith('.md')) results.push(full);
+  async function walk(d) {
+    const entries = await fs.readdir(d, { withFileTypes: true });
+    for (const e of entries) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) await walk(p);
+      else if (e.isFile() && e.name.endsWith('.md')) results.push(p);
     }
   }
   await walk(dir);
   return results;
 }
 
-// Ensure ISO from frontmatter
+// get ISO date from frontmatter
 function isoDateFromFM(data) {
   if (!data.date) return null;
   const dt = new Date(data.date);
-  return isNaN(dt) ? null : dt.toISOString();
+  if (isNaN(dt)) return null;
+  return dt.toISOString();
 }
 
-// Very simple markdown → plain text
+// convert markdown to plain text (keep paragraphs, preserve italics, remove bold, headings, links)
 function markdownToPlain(md) {
   let txt = md;
 
-  // Remove frontmatter if any
+  // Remove front-matter if present
   txt = txt.replace(/^---[\s\S]*?---\n/, '');
 
-  // Remove images
-  txt = txt.replace(/!\[.*?\]\(.*?\)/g, '');
+  // Keep *italics*, remove bold
+  txt = txt.replace(/\*\*(.*?)\*\*/gs, '$1'); 
+  txt = txt.replace(/__(.*?)__/gs, '$1'); 
 
-  // Convert links [txt](url) → txt
-  txt = txt.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
-
-  // Remove bold, keep italics
-  txt = txt.replace(/\*\*(.*?)\*\*/g, '$1');
-  txt = txt.replace(/__(.*?)__/g, '$1');
-
-  // Normalize italics
-  txt = txt.replace(/_(.*?)_/g, '*$1*');
+  // Normalize italics to *
+  txt = txt.replace(/_(.*?)_/gs, '*$1*');
 
   // Remove headings
   txt = txt.replace(/^#+\s*(.*)/gm, '$1');
 
-  // Collapse triple newlines
+  // Convert links [text](url) -> text
+  txt = txt.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+
+  // Remove images
+  txt = txt.replace(/!\[.*?\]\(.*?\)/g, '');
+
+  // Trim excess blank lines
   txt = txt.replace(/\n{3,}/g, '\n\n');
 
   return txt.trim();
 }
 
-// --- Simple Mastodon posting (single post only, truncated) ---
-async function postToMastodon(baseUrl, token, text, link) {
-  const MAX = 1500;
+// Mastodon post
+async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
+  const chunks = [];
 
-  let finalText = text;
-  if (finalText.length > MAX) {
-    finalText = finalText.slice(0, MAX - 20).trim() + "…";
+  if (socialPreview && text.length + link.length + 1 > 1000) {
+    // Split into 1000-char chunks, append link to first/last
+    let remaining = text;
+    while (remaining.length > 0) {
+      let chunk = remaining.slice(0, 1000 - 1);
+      if (remaining.length > 1000) {
+        const lastSpace = chunk.lastIndexOf(' ');
+        if (lastSpace > 0) chunk = chunk.slice(0, lastSpace);
+      }
+      chunks.push(chunk);
+      remaining = remaining.slice(chunk.length).trim();
+    }
+    chunks[0] = `${chunks[0]}\n${link}`;
+    chunks[chunks.length - 1] = `${chunks[chunks.length - 1]}\n${link}`;
+  } else {
+    // Full text + link
+    chunks.push(`${text}\n${link}`);
   }
 
-  finalText += `\nread more:\n${link}`;
+  let replyId = null;
+  for (let i = 0; i < chunks.length; i++) {
+    const status = chunks[i];
+    const body = { status };
+    if (replyId) body.in_reply_to_id = replyId;
+    const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      const txt = await res.text();
+      throw new Error(`Mastodon post failed: ${res.status} ${txt}`);
+    }
+    const json = await res.json();
+    replyId = json.id;
+    console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
+  }
+// Mastodon post (paragraph-safe)
+async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
+  const chunks = [];
 
-  const body = { status: finalText };
+  if (socialPreview && text.length + link.length + 1 > 1000) {
+    // Split text into paragraphs first
+    const paragraphs = text.split(/\n{2,}/); // double line breaks separate paragraphs
+    let currentChunk = '';
 
-  const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
+    for (const para of paragraphs) {
+      if ((currentChunk + '\n\n' + para).trim().length > 1000) {
+        if (currentChunk) {
+          // push previous chunk
+          chunks.push(currentChunk.trim() + '\n' + link);
+        }
+        currentChunk = para; // start new chunk with current paragraph
+      } else {
+        currentChunk += (currentChunk ? '\n\n' : '') + para;
+      }
+    }
 
-  if (!res.ok) {
-    throw new Error(`Mastodon post failed: ${res.status} ${await res.text()}`);
+    if (currentChunk) {
+      chunks.push(currentChunk.trim() + '\n' + link);
+    }
+  } else {
+    // Full text + link
+    chunks.push(`${text}\n${link}`);
   }
 
-  console.log('Mastodon posted successfully.');
+  let replyId = null;
+  for (let i = 0; i < chunks.length; i++) {
+    const status = chunks[i];
+    const body = { status };
+    if (replyId) body.in_reply_to_id = replyId;
+    const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      const txt = await res.text();
+      throw new Error(`Mastodon post failed: ${res.status} ${txt}`);
+    }
+    const json = await res.json();
+    replyId = json.id;
+    console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
+  }
 }
 
-// --- Simple Bluesky posting (single post only, truncated) ---
-async function postToBluesky(username, appPass, text, link) {
-  const MAX = 300;
+}
 
+// Bluesky post
+async function postToBluesky(username, appPass, text, socialPreview = true, postLink = '') {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
 
-  let finalText = text;
-  if (finalText.length > MAX) {
-    finalText = finalText.slice(0, MAX - 20).trim() + "…";
-  }
+  const plainText = text;
 
-  finalText += `\nread more:\n${link}`;
+  const MAX_LEN = 300;
+  let finalText;
+
+  if (plainText.length > MAX_LEN && socialPreview) {
+    // truncate + read more at canonical link
+    const truncated = plainText.slice(0, MAX_LEN - 12).trim();
+    finalText = `${truncated}… read more at:\n${postLink}`;
+  } else {
+    // full text + canonical link
+    finalText = `${plainText}\n${postLink}`;
+  }
 
   const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
 }
 
-// --- MAIN ---
+// main
 async function main() {
   console.log('Autopost: starting');
 
@@ -140,54 +218,63 @@ async function main() {
   const bskyAppPass = process.env.BSKY_APP_PASS || null;
 
   const lastPostedIso = await readLastPosted();
-  console.log('Last posted:', lastPostedIso || '(none)');
+  console.log('Last posted date:', lastPostedIso || '(none)');
 
-  const files = await collectMdFiles(CONTENT_DIR);
+  const mdFiles = await collectMdFiles(CONTENT_DIR);
+  if (mdFiles.length === 0) {
+    console.log('No markdown files found in', CONTENT_DIR);
+    return;
+  }
 
+  // parse files and filter by socials tag
   const posts = [];
-  for (const file of files) {
-    const raw = await fs.readFile(file, 'utf8');
+  for (const f of mdFiles) {
+    const raw = await fs.readFile(f, 'utf8');
     const fm = matter(raw);
     const iso = isoDateFromFM(fm.data);
-
-    if (!iso) continue;
     const tags = fm.data.tags
-      ? (Array.isArray(fm.data.tags) ? fm.data.tags : [fm.data.tags])
+      ? Array.isArray(fm.data.tags) ? fm.data.tags.map(t => t.toLowerCase()) : [fm.data.tags.toLowerCase()]
       : [];
-    if (!tags.map(t => t.toLowerCase()).includes('socials')) continue;
-
-    posts.push({ path: file, dateIso: iso, content: raw });
+    if (!iso || !tags.includes('socials')) continue;
+    posts.push({ path: f, dateIso: iso, content: raw });
   }
 
   if (posts.length === 0) {
-    console.log('No posts tagged socials.');
+    console.log('No new posts tagged socials found.');
     return;
   }
 
+  // find newest by date
   posts.sort((a, b) => new Date(b.dateIso) - new Date(a.dateIso));
   const newest = posts[0];
+  console.log('Newest post for socials:', newest.path, newest.dateIso);
 
-  console.log('Newest social post:', newest.path, newest.dateIso);
-
+  // skip if already posted
   if (lastPostedIso && new Date(newest.dateIso) <= new Date(lastPostedIso)) {
-    console.log('No new posts to publish.');
+    console.log('No new posts to publish (already posted). Exiting.');
     return;
   }
 
+  // frontmatter
   const fm = matter(newest.content);
   const postLink = `https://niall.garden/${path.basename(newest.path, '.md')}`;
-  const text = markdownToPlain(fm.content);
+  const socialPreview = fm.data.social_preview !== false && !fm.data.social_no_link;
 
+  // Mastodon
   if (mastodonBase && mastodonToken) {
-    await postToMastodon(mastodonBase, mastodonToken, text, postLink);
+    await postToMastodon(mastodonBase, mastodonToken, markdownToPlain(fm.content), socialPreview, postLink);
   }
 
+  // Bluesky
   if (bskyUser && bskyAppPass) {
-    await postToBluesky(bskyUser, bskyAppPass, text, postLink);
+    await postToBluesky(bskyUser, bskyAppPass, markdownToPlain(fm.content), socialPreview, postLink);
+  } else {
+    console.log('Bluesky credentials missing. Skipping Bluesky.');
   }
 
   await writeLastPosted(newest.dateIso);
-  console.log('Saved last posted date.');
+  console.log('Updated last-social-post.json to', newest.dateIso);
+
   console.log('Autopost: finished');
 }
 
