@@ -131,82 +131,44 @@ async function postToMastodon(baseUrl, token, text, socialPreview = true, link =
     replyId = json.id;
     console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
   }
-// Mastodon post (paragraph-safe)
-async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
-  const chunks = [];
-
-  if (socialPreview && text.length + link.length + 1 > 1000) {
-    // Split text into paragraphs first
-    const paragraphs = text.split(/\n{2,}/); // double line breaks separate paragraphs
-    let currentChunk = '';
-
-    for (const para of paragraphs) {
-      if ((currentChunk + '\n\n' + para).trim().length > 1000) {
-        if (currentChunk) {
-          // push previous chunk
-          chunks.push(currentChunk.trim() + '\n' + link);
-        }
-        currentChunk = para; // start new chunk with current paragraph
-      } else {
-        currentChunk += (currentChunk ? '\n\n' : '') + para;
-      }
-    }
-
-    if (currentChunk) {
-      chunks.push(currentChunk.trim() + '\n' + link);
-    }
-  } else {
-    // Full text + link
-    chunks.push(`${text}\n${link}`);
-  }
-
-  let replyId = null;
-  for (let i = 0; i < chunks.length; i++) {
-    const status = chunks[i];
-    const body = { status };
-    if (replyId) body.in_reply_to_id = replyId;
-    const res = await fetch(new URL('/api/v1/statuses', baseUrl), {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) {
-      const txt = await res.text();
-      throw new Error(`Mastodon post failed: ${res.status} ${txt}`);
-    }
-    const json = await res.json();
-    replyId = json.id;
-    console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
-  }
-}
 
 }
 
-// Bluesky post
+// Bluesky post (hard 300-grapheme limit)
 async function postToBluesky(username, appPass, text, socialPreview = true, postLink = '') {
   const agent = new BskyAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: username, password: appPass });
 
-  const plainText = text;
+  // Convert JS string → grapheme clusters
+  const graphemes = [...text]; 
+  const MAX = 300;
 
-  const MAX_LEN = 300;
-  let finalText;
+  let finalText = '';
 
-  if (plainText.length > MAX_LEN && socialPreview) {
-    // truncate + read more at canonical link
-    const truncated = plainText.slice(0, MAX_LEN - 12).trim();
-    finalText = `${truncated}… read more at:\n${postLink}`;
+  if (socialPreview) {
+    // footer always added
+    const footer = `… read more at:\n${postLink}`;
+
+    if (graphemes.length + [...footer].length <= MAX) {
+      // fits entirely
+      finalText = text + '\n' + footer;
+    } else {
+      // truncate so footer fits
+      const allowed = MAX - [...footer].length;
+      const truncated = graphemes.slice(0, allowed).join('').trim();
+      finalText = truncated + '\n' + footer;
+    }
   } else {
-    // full text + canonical link
-    finalText = `${plainText}\n${postLink}`;
+    // no social preview → full text + link
+    const withLink = `${text}\n${postLink}`;
+    const g = [...withLink];
+    finalText = g.slice(0, MAX).join('');
   }
 
   const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
 }
+
 
 // main
 async function main() {
