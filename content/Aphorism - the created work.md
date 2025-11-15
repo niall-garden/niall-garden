@@ -9,3 +9,4 @@ draft: false
 Even when it feels like a failure, the created work is still more perfect than the initial idea by merit of its actual existence. 
 
 [[notes - 2025]]
+
