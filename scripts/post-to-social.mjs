@@ -87,24 +87,31 @@ function markdownToPlain(md) {
   return txt.trim();
 }
 
-// Mastodon post
+// Mastodon post (paragraph-safe, 1500 characters)
 async function postToMastodon(baseUrl, token, text, socialPreview = true, link = '') {
   const chunks = [];
+  const LIMIT = 1500;
 
-  if (socialPreview && text.length + link.length + 1 > 1000) {
-    // Split into 1000-char chunks, append link to first/last
-    let remaining = text;
-    while (remaining.length > 0) {
-      let chunk = remaining.slice(0, 1000 - 1);
-      if (remaining.length > 1000) {
-        const lastSpace = chunk.lastIndexOf(' ');
-        if (lastSpace > 0) chunk = chunk.slice(0, lastSpace);
+  if (socialPreview && text.length + link.length + 1 > LIMIT) {
+    // Split text into paragraphs first
+    const paragraphs = text.split(/\n{2,}/); // double line breaks separate paragraphs
+    let currentChunk = '';
+
+    for (const para of paragraphs) {
+      if ((currentChunk + '\n\n' + para).trim().length > LIMIT) {
+        if (currentChunk) {
+          // push previous chunk
+          chunks.push(currentChunk.trim() + '\n' + link);
+        }
+        currentChunk = para; // start new chunk with current paragraph
+      } else {
+        currentChunk += (currentChunk ? '\n\n' : '') + para;
       }
-      chunks.push(chunk);
-      remaining = remaining.slice(chunk.length).trim();
     }
-    chunks[0] = `${chunks[0]}\n${link}`;
-    chunks[chunks.length - 1] = `${chunks[chunks.length - 1]}\n${link}`;
+
+    if (currentChunk) {
+      chunks.push(currentChunk.trim() + '\n' + link);
+    }
   } else {
     // Full text + link
     chunks.push(`${text}\n${link}`);
@@ -131,7 +138,6 @@ async function postToMastodon(baseUrl, token, text, socialPreview = true, link =
     replyId = json.id;
     console.log(`Mastodon posted chunk ${i + 1}/${chunks.length}, id:`, json.id);
   }
-
 }
 
 // Bluesky post (hard 300-grapheme limit)
@@ -168,7 +174,6 @@ async function postToBluesky(username, appPass, text, socialPreview = true, post
   const res = await agent.post({ text: finalText });
   console.log('Bluesky posted:', res.uri || '(no uri returned)');
 }
-
 
 // main
 async function main() {
