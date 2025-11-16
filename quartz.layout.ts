@@ -59,6 +59,15 @@ export const defaultContentPageLayout: PageLayout = {
         // linkToMore: linkToMore: "all",   // <— matches all.md slug
       }),
     }),
+ // Full archive on /all page
+  Component.ConditionalRender({
+    condition: (page) => page.fileData.slug === "all",
+    component: Component.RecentNotes({
+      title: "All Posts",
+      limit: undefined,   // ← shows everything
+      showTags: true,
+    }),
+  }),
   ],
 }
 
