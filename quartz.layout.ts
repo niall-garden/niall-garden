@@ -38,20 +38,18 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
+    Component.Explorer(),
   ],
   right: [
+    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
 }
 
-// components for pages that display lists of pages (e.g. tags or folders)
+// components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [
-    Component.Breadcrumbs(),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-  ],
+  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
@@ -66,41 +64,5 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [],
-}
-
-// --- New layouts for index and all posts ---
-
-export const indexPageLayout: PageLayout = {
-  beforeBody: [
-    Component.ArticleTitle(),
-    Component.Content(),
-  ],
-  afterBody: [
-    Component.RecentNotes({
-      title: "Recent posts",
-      limit: 10,
-      showTags: false,
-      linkToMore: "all-posts",
-    }),
-  ],
-  left: [],
-  right: [],
-}
-
-export const allPostsPageLayout: PageLayout = {
-  beforeBody: [
-    Component.ArticleTitle(),
-    Component.Content(),
-  ],
-  afterBody: [
-    Component.RecentNotes({
-      title: "All Posts",
-      limit: Infinity,
-      showTags: true,
-      linkToMore: "",
-    }),
-  ],
-  left: [],
   right: [],
 }
