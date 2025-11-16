@@ -38,7 +38,12 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.RecentNotes({
+  title: "Recent posts",
+  limit: 100,
+  showTags: false,
+})
+,
   ],
   right: [
     Component.Graph(),
