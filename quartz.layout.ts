@@ -47,7 +47,11 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
@@ -62,5 +66,37 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
+  right: [],
+}
+
+// --- New layouts for index and all posts ---
+
+export const indexPageLayout: PageLayout = {
+  beforeBody: [
+    Component.ArticleTitle(),
+    Component.Content(),
+    Component.RecentNotes({
+      title: "Recent posts",
+      limit: 10,
+      showTags: false,
+      linkToMore: "all-posts"
+    }),
+  ],
+  left: [],
+  right: [],
+}
+
+export const allPostsPageLayout: PageLayout = {
+  beforeBody: [
+    Component.ArticleTitle(),
+    Component.Content(),
+    Component.RecentNotes({
+      title: "All Posts",
+      limit: Infinity,
+      showTags: true,
+      linkToMore: "",
+    }),
+  ],
+  left: [],
   right: [],
 }
