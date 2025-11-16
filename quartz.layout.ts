@@ -45,11 +45,30 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+
+  // -------------------------------------------------------
+  // ⬇️ Add Recent Notes ONLY on index page
+  // -------------------------------------------------------
+  afterBody: [
+    Component.ConditionalRender({
+      condition: (page) => page.fileData.slug === "index",
+      component: Component.RecentNotes({
+        title: "Recent writing",   // customize title
+        limit: 5,                   // number of posts
+        showTags: true,             // show tags under each post
+        // linkToMore: "tags/writing",  // optional "see more" link
+      }),
+    }),
+  ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
+// components for pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(), 
+    Component.ArticleTitle(), 
+    Component.ContentMeta()
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
