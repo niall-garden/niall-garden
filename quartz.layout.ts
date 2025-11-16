@@ -56,7 +56,7 @@ export const defaultContentPageLayout: PageLayout = {
         title: "Recent writing",   // customize title
         limit: 5,                   // number of posts
         showTags: true,             // show tags under each post
-        // linkToMore: "tags/writing",  // optional "see more" link
+        // linkToMore: linkToMore: "all",   // <— matches all.md slug
       }),
     }),
   ],
