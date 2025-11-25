@@ -8,24 +8,59 @@ If you would like to get in touch you can email me at the address below (remove 
 
 rusty niall at icloud dot com
 
-<div class="container">
-  <h1>FormSubmit Demo</h1>
-  <form target="_blank" action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST">
-    <div class="form-group">
-      <div class="form-row">
-        <div class="col">
-          <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-        </div>
-        <div class="col">
-          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
-  </form>
+<form action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST" class="w-full max-w-2xl space-y-6">
+
+  <h1 class="text-3xl font-semibold">Contact Me</h1>
+
+  <!-- Name -->
+  <div>
+    <label class="block mb-2 font-medium">Name</label>
+    <input 
+      type="text" 
+      name="name" 
+      required
+      class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label class="block mb-2 font-medium">Email</label>
+    <input 
+      type="email" 
+      name="email" 
+      required
+      class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label class="block mb-2 font-medium">Message</label>
+    <textarea 
+      name="message" 
+      rows="6" 
+      required
+      class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+    ></textarea>
+  </div>
+
+  <!-- Honeypot -->
+  <input type="text" name="_honey" style="display:none">
+
+  <!-- Optional: disable CAPTCHA -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Submit button -->
+  <button 
+    type="submit"
+    class="px-5 py-3 rounded-md bg-black text-white font-semibold hover:bg-gray-800 transition"
+  >
+    Send Message
+  </button>
+
+</form>
+
 
 You can also contact me via the some of the socials mentioned in my links page.
 
