@@ -1,0 +1,119 @@
+Got it — you want a **cheat sheet *written in Markdown* that you can drop directly into your garden**, documenting the custom front-matter fields + rules we created for your autopost workflow.
+
+Here is a **clean, ready-to-paste Markdown file**:
+
+---
+
+````markdown
+# Social Posting Cheat Sheet (for niall.garden)
+
+This page documents the custom front-matter fields and behaviours used by the **autopost-to-social** script for Bluesky and Mastodon.
+
+## Front Matter Options
+
+Add these to the top of any post as needed:
+
+```yaml
+---
+title: Your Post Title
+date: 2025-11-05
+tags: [socials]          # REQUIRED for autoposting
+social_preview: false    # Optional: disables rich previews (clean URL only)
+social_no_link: false    # Optional: true = do NOT include canonical link
+---
+````
+
+### **Required**
+
+| Field             | Type  | Description                                               |
+| ----------------- | ----- | --------------------------------------------------------- |
+| `tags: [socials]` | array | Must contain `socials` for the script to publish the post |
+
+### **Optional Fields**
+
+| Field                   | Default                      | When to Use                                                                    |
+| ----------------------- | ---------------------------- | ------------------------------------------------------------------------------ |
+| `social_preview: false` | Not set (preview may appear) | Set to `false` to prevent link previews/cards on Bluesky & Mastodon            |
+| `social_no_link: true`  | false                        | Use only for short “shitposts” where including the canonical link is redundant |
+
+---
+
+## Posting Rules (How the Script Behaves)
+
+### **Canonical Link**
+
+* The canonical link to your site is **always included** unless:
+
+  * The post fully fits on the platform **and** you've set `social_no_link: true`
+
+### **If Post Fits Within Character Limit**
+
+| Platform | Behaviour                                                        |
+| -------- | ---------------------------------------------------------------- |
+| Mastodon | Posts as a single toot with clean URL (unless `social_no_link`)  |
+| Bluesky  | Posts as a single skeet with clean URL (unless `social_no_link`) |
+
+### **If Post is Too Long**
+
+| Platform | Behaviour                                                        |
+| -------- | ---------------------------------------------------------------- |
+| Mastodon | Automatically threaded into multiple posts                       |
+| Bluesky  | Not threaded — text is shortened with `…` + a **Read more** link |
+
+### **Link & Preview Rules**
+
+* URLs are shared in **clean form** (no rich preview card)
+* Inline Markdown links are handled as follows:
+
+| Case                           | Mastodon   | Bluesky                                         |
+| ------------------------------ | ---------- | ----------------------------------------------- |
+| External links `[text](url)`   | Kept as-is | Converted to plain URL (to ensure clickability) |
+| Internal wiki links `[[link]]` | Stripped   | Stripped                                        |
+| Images `![]()`                 | Stripped   | Stripped                                        |
+
+---
+
+## Writing Guidance for Social-Optimised Posts
+
+### **Recommended Format**
+
+Write your post normally, then include the canonical link at the bottom:
+
+```markdown
+This is the post content I'm sharing to socials.
+
+https://niall.garden/my-post
+```
+
+### **If You DON’T Want to Include the Link**
+
+Add this to front matter:
+
+```yaml
+social_no_link: true
+```
+
+---
+
+## TL;DR Version
+
+Keep this in your head:
+
+* Add `tags: [socials]` to autopost
+* Add `social_preview: false` for clean link only (no card)
+* Add `social_no_link: true` only for very short posts
+* Mastodon threads long posts; Bluesky truncates + adds link
+* Internal links removed; external links preserved/cleaned
+
+```
+
+---
+
+Would you like me to also:
+
+A) Turn this into a **permanent page in your garden** (I can provide a filename and structure to drop into `content/meta/`)
+
+or
+
+B) Generate a **1-page printable PDF** version?
+```
