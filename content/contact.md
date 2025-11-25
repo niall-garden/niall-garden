@@ -6,7 +6,7 @@ tags:
 ---
 If you would like to get in touch you can drop a message with your name and email into the form below:
 
-{% raw %}
+
 <div class="container">
   <h1>Contact Me</h1>
   <form target="_blank" action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST">
@@ -26,7 +26,7 @@ If you would like to get in touch you can drop a message with your name and emai
     <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
   </form>
 </div>
-{% endraw %}
+
 
 
 
