@@ -6,50 +6,27 @@ tags:
 ---
 If you would like to get in touch you can drop a message with your name and email into the form below:
 
-
-<form target="_blank" action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST" class="contact-form">
-<input type="hidden" name="_captcha" value="false">
-
-<label>Your Name</label>
-<input type="text" name="name" required>
-
-<label>Your Email</label>
-<input type="email" name="email" required>
-
-<label>Your Message</label>
-<textarea name="message" rows="6" required></textarea>
-
-<button type="submit">Send Message</button>
-</form>
-
-<style>
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 600px;
-  margin: 2rem auto;
-}
-.contact-form input,
-.contact-form textarea {
-  background: var(--light);
-  color: var(--dark);
-  border: 1px solid var(--dark);
-  padding: 0.7rem;
-  border-radius: 6px;
-}
-.contact-form button {
-  background: var(--secondary);
-  color: var(--light);
-  padding: 0.8rem 1rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-}
-.contact-form button:hover {
-  background: var(--secondary-dark);
-}
-</style>
+{% raw %}
+<div class="container">
+  <h1>Contact Me</h1>
+  <form target="_blank" action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST">
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+        </div>
+        <div class="col">
+          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+  </form>
+</div>
+{% endraw %}
 
 
 
