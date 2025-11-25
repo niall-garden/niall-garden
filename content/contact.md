@@ -7,58 +7,50 @@ tags:
 If you would like to get in touch you can drop a message with your name and email into the form below:
 
 
-<div class="w-full max-w-2xl">
+<form target="_blank" action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST" class="contact-form">
+<input type="hidden" name="_captcha" value="false">
 
-  <h1 class="text-3xl font-semibold mb-6">Contact Me</h1>
+<label>Your Name</label>
+<input type="text" name="name" required>
 
-  <form action="https://formsubmit.co/a3b38e4c124762ccede0f2a567009ca1" method="POST" class="space-y-6">
+<label>Your Email</label>
+<input type="email" name="email" required>
 
-    <!-- Name -->
-    <div>
-      <label class="block mb-2 font-medium">Name</label>
-      <input 
-        type="text" 
-        name="name" 
-        required
-        class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-    </div>
+<label>Your Message</label>
+<textarea name="message" rows="6" required></textarea>
 
-    <!-- Email -->
-    <div>
-      <label class="block mb-2 font-medium">Email</label>
-      <input 
-        type="email" 
-        name="email" 
-        required
-        class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-    </div>
+<button type="submit">Send Message</button>
+</form>
 
-    <!-- Message -->
-    <div>
-      <label class="block mb-2 font-medium">Message</label>
-      <textarea 
-        name="message" 
-        rows="6" 
-        required
-        class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-      ></textarea>
-    </div>
+<style>
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.contact-form input,
+.contact-form textarea {
+  background: var(--light);
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  padding: 0.7rem;
+  border-radius: 6px;
+}
+.contact-form button {
+  background: var(--secondary);
+  color: var(--light);
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.contact-form button:hover {
+  background: var(--secondary-dark);
+}
+</style>
 
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="_captcha" value="false">
-
-    <button 
-      type="submit"
-      class="px-5 py-3 rounded-md bg-black text-white font-semibold hover:bg-gray-800 transition"
-    >
-      Send Message
-    </button>
-
-  </form>
-
-</div>
 
 
 You can also contact me via the some of the socials mentioned in my links page.
