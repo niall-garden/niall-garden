@@ -1,5 +1,6 @@
 ---
 title: POEM (Dwayne Johnson has lost 60lbs) –⁠ after Frank O'Hara
+slug: poem--dwayne-johnson-has-lost-50lbs
 date: 2025-09-05T20:31:00
 tags:
   - poems
@@ -14,3 +15,4 @@ I was contemplating the subtle late August/early September shift as I counted fo
 🪴
 
 [[count them!]]
+[[poems]]
