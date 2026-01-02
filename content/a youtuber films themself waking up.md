@@ -3,8 +3,9 @@ title: a youtuber films themself waking up
 date: "2024"
 tags:
   - poems
-status: 
+status:
 draft: false
+slug: a_youtuber_films_themself_waking _up
 ---
 
 
