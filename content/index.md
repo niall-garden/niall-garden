@@ -20,4 +20,4 @@ Visitors are free to wander, following links from post to post and finding their
 🔗 [[links]]  
 ♾️ [[all]]
 
-AI disclaimer: I have used AI for the code that automatically shares my posts to Mastodon and Threads. However, no AI has been used to create or edit any of the writing on this site and this will continue to be the case. 
+AI disclaimer: I have used AI for the code that automatically shares my posts to Mastodon and Bluesky. However, no AI has been used to create or edit any of the writing on this site and this will continue to be the case. 
