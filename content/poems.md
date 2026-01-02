@@ -27,7 +27,8 @@ For now the poems will just appear as a list but when they get numerous enough I
 [[good friday]]  🌱  
 [[heraclitus in south london]]  🌿  
 [[just you wait til I get you home]] 🪴  
-[[poem--dwayne johnson has lost 50lbs]]  
+[[Lawrence Olivier's wobbly face]] 🌿
+[[poem--dwayne johnson has lost 50lbs]]  🪴
 [[sheet lightning]] 🌱  
 [[slow curve]]  🪴  
 [[the monk]]  🌿  
