@@ -28,7 +28,7 @@ For now the poems will just appear as a list but when they get numerous enough I
 [[heraclitus in south london]]  🌿  
 [[just you wait til I get you home]] 🪴  
 [[Lawrence Oliviers wobbly face]] 🌿  
-[[on-bowie-and-brixton |On Bowie and Brixton 🌿]]
+[[on-bowie-and-brixton |On Bowie and Brixton 🌿]]  
 [[late-decorations|on taking down the decorations a day late]]  🌿
 [[poem--dwayne-johnson-has-lost-50lbs|POEM (Dwayne Johnson has lost 60lbs) –⁠ after Frank O'Hara]]  🪴  
 [[sheet lightning]] 🌱  

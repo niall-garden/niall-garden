@@ -23,7 +23,7 @@ Bowie was never a part of what drew me here, and even now, as much as I love his
 his presence feels as thin as a layer of spray paint on a wall that locals have scrawled on for decades,  
 but, on this day between his birthday and deathday, it feels like the perfect time to pause before his perspex shielded boat race,  
 to stand stock still in the pouring rain,  
-before I shuffle on from Marks to Poundland. 
+before I shuffle on from Marks and Sparks to Poundland. 
 
 11/01/26
 
