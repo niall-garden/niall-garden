@@ -7,6 +7,8 @@ tags:
   - 🪴
 draft: false
 ---
+*(after Frank O'Hara)*
+
 One of the drinkers, huddled under the sky-garden wedge of the Cherry Groce memorial, 
 has broken off from from the group to improvise an elaborate martial arts routine with a crutch he clearly doesn't need.   
 He shifts from one-handed to two handed, from staff to kendo stick,  
