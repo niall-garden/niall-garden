@@ -18,7 +18,7 @@ I pass them and make out a sleepy trumpet, crooning from a bluetooth speaker and
 and the scene is suddenly flooded with tenderness  
 and an endless, autumnal warmth gilds the slight chill of a late-spring Brixton morning,  
 and all of our troubles scarper to whatever corners will harbour them,  
-beyond the scope of this sudden, trembling love.  
+beyond the scope of this sudden, fragile love.  
 
 11/05/26
 
