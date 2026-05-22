@@ -7,8 +7,6 @@ tags:
 date: 2024-09-04
 stage: seed
 ---
-
-
 Perhaps this is what religion is for?
 
 A strain of intensity and madness to sublimate one's paunchy, balding final form?

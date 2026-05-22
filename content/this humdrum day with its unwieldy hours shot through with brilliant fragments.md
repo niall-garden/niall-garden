@@ -77,4 +77,11 @@ I lay down in the dark and look for the one within that looks to find a nothingn
 
 🌳
 
+About this poem:
+
+There's no way of explaining the inspirations for this poem without sounding very pretentious. So with that disclaimer out of the way, let me tell you where this poem comes from.
+
+This poem was equally inspired by the works of Basho and Wittgenstein's Tractatus (told ya). Basho's influence is hopefully noticeable from the fragments themselves at the very end, but there's also an element of inspiration from Basho's travel journals, with their interplays of prose and poetry. The Tractatus element was more about the structural quality, who a brief statement can break down into several sub-clauses. Ultimately, I was aiming for the kind of poem that might exist online, something that is never really finished and is added to and subtracted from whenever I might feel inclined. It was also a way of shoehorning in some philosophy under cover of poetic whimsicality. 
+
+
 [[poems]]
